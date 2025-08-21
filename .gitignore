@@ -1,0 +1,91 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+
+# OS (Windows/macOS)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Java / build artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar
+*.tar.gz
+
+# Keep Maven Wrapper JAR tracked even though *.jar is ignored
+!/.mvn/wrapper/maven-wrapper.jar
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Logs and runtime
+logs/
+*.log
+spring.log
+*.pid
+*.pid.lock
+
+
+# Local environment/secrets
+.env
+.env.*
+*.env
+!.env.example
+!.env.sample
+
+# Spring Boot local overrides only (commit other profiles)
+application-local.properties
+application-local.yml
+application-*.local.properties
+application-*.local.yml
+
+# Coverage/temp files
+jacoco.exec
+*.hprof
+*.swp
+*.swo
+*~
