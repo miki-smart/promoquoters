@@ -39,6 +39,9 @@ public class ProductEntity {
     @Column(nullable = false) private Instant createdAt;
     @Column(nullable = false) private Instant updatedAt;
 
+    @Version
+    private Long version;
+
     @PrePersist
     public void prePersist() {
         createdAt = Instant.now();

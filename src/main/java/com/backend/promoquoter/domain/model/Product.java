@@ -23,20 +23,22 @@ public class Product
    private final String description;
     private final BigDecimal price;
     private final  Integer stock;
+    private final Long version;
 
 
-    public Product(UUID id, String name, String category, String description, BigDecimal price, Integer stock) {
+    public Product(UUID id, String name, String category, String description, BigDecimal price, Integer stock,Long version) {
         this.id = id;
         this.name = requireNonEmpty(name, "name");
         this.category = requireNonEmpty(category, "category");
         this.description = requireNonEmpty(description, "description");
         this.price = requireNonNegative(price, "price");
         this.stock = requireNonNegative(stock, "stock");
+        this.version=version;
     }
 
     //Factory Method for new products
     public static Product createNew( String name, String category, String description, BigDecimal price, Integer stock) {
-        return new Product(UUID.randomUUID(), name, category, description, price, stock);
+        return new Product(null, name, category, description, price, stock, null);
     }
     public void reserveStock(int quantity) {
         if(stock<quantity) {
@@ -68,6 +70,8 @@ public class Product
         }
         return value;
     }
+
+
 
 
     public static class InSufficentStockException extends RuntimeException {

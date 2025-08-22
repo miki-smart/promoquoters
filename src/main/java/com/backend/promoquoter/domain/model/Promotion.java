@@ -1,22 +1,23 @@
 package com.backend.promoquoter.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Map;
 import java.util.UUID;
 
+@Getter
+@Setter
+@NoArgsConstructor(force = true)
+@AllArgsConstructor
 public class Promotion {
     private final UUID id;
     private final String type; // e.g., PERCENT_OFF_CATEGORY, BUY_X_GET_Y
     private final Map<String, Object> config;
     private final int priority;
     private final boolean active;
-
-    public Promotion(UUID id, String type, Map<String, Object> config, int priority, boolean active) {
-        this.id = id;
-        this.type = type;
-        this.config = config;
-        this.priority = priority;
-        this.active = active;
-    }
     public static Promotion create(String type, Map<String, Object> config, int priority, boolean active) {
         return new Promotion(UUID.randomUUID(), type, config, priority, active);
     }

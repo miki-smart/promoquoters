@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface IPromotionRepository {
     Promotion findById(UUID id);
-    Promotion save(Promotion promotion);
+    Promotion savePromotion(Promotion promotion);
     void deleteById(UUID id);
     Promotion updatePromotion(Promotion promotion);
     List<Promotion> findAllPromotions();
