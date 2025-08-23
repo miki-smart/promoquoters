@@ -20,4 +20,5 @@ public class ApplicationConfig {
     public IPromotionRepository promotionRepository(PromotionJpaRepository promotionJpaRepository) {
         return new PromotionJpaAdapter(promotionJpaRepository);
     }
+
 }

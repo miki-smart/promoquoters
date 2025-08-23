@@ -2,12 +2,19 @@ package com.backend.promoquoter.infrastructure.adapter.out.persistence.adapter;
 
 import com.backend.promoquoter.application.port.out.IPromotionRepository;
 import com.backend.promoquoter.domain.model.Promotion;
+import com.backend.promoquoter.infrastructure.adapter.out.persistence.entity.PromotionEntity;
+import com.backend.promoquoter.infrastructure.adapter.out.persistence.mapper.PromotionMapper;
 import com.backend.promoquoter.infrastructure.adapter.out.persistence.repo.ProductJpaRepository;
 import com.backend.promoquoter.infrastructure.adapter.out.persistence.repo.PromotionJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static com.backend.promoquoter.infrastructure.adapter.out.persistence.mapper.PromotionMapper.toDomain;
+
 @Repository
 public class PromotionJpaAdapter implements IPromotionRepository {
     private final PromotionJpaRepository promotionJpaRepository;
@@ -15,42 +22,41 @@ public class PromotionJpaAdapter implements IPromotionRepository {
         this.promotionJpaRepository = promotionJpaRepository;
     }
     @Override
-    public Promotion findById(UUID id) {
-        return null;
+    public Optional<Promotion> findById(UUID id) {
+        return this.promotionJpaRepository.findById(id).map(entity-> PromotionMapper.toDomain(entity));
     }
 
     @Override
     public Promotion savePromotion(Promotion promotion) {
-        return null;
+        PromotionEntity entity = PromotionMapper.toEntity(promotion);
+        PromotionEntity saved = this.promotionJpaRepository.save(entity);
+        return PromotionMapper.toDomain(saved);
     }
 
     @Override
     public void deleteById(UUID id) {
-
+        this.promotionJpaRepository.deleteById(id);
     }
 
     @Override
     public Promotion updatePromotion(Promotion promotion) {
-        return null;
+        PromotionEntity entity = PromotionMapper.toEntity(promotion);
+        PromotionEntity updated = this.promotionJpaRepository.save(entity);
+        return PromotionMapper.toDomain(updated);
     }
 
     @Override
     public List<Promotion> findAllPromotions() {
-        return List.of();
+        return this.promotionJpaRepository.findAll().stream().map(entity-> PromotionMapper.toDomain(entity)).toList();
     }
 
-    @Override
-    public Promotion findPromotionByType(String type) {
-        return null;
-    }
 
     @Override
     public List<Promotion> saveAll(List<Promotion> promotions) {
-        return List.of();
+        List<PromotionEntity> promotionEntities = promotions.stream().map(entity-> PromotionMapper.toEntity(entity)).toList();
+        List<PromotionEntity> savedEntities = this.promotionJpaRepository.saveAll(promotionEntities);
+        return savedEntities.stream().map(PromotionMapper::toDomain).toList();
     }
 
-    @Override
-    public List<Promotion> findActivePromotions() {
-        return List.of();
-    }
+
 }

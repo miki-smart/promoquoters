@@ -19,6 +19,12 @@ public class ProductApplicationService implements ProductUseCase {
     }
     @Override
     public List<ProductDtos> createProducts(List<CreateProductCommand> commands) {
+        if (commands == null) {
+            throw new IllegalArgumentException("Commands list cannot be null");
+        }
+        if (commands.isEmpty()) {
+            throw new IllegalArgumentException("Commands list cannot be empty");
+        }
         return commands.stream().map(this::createProduct).toList();
     }
     public ProductDtos createProduct(CreateProductCommand command) {
