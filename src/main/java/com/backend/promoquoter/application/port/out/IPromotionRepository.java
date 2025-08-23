@@ -14,4 +14,5 @@ public interface IPromotionRepository {
     Promotion updatePromotion(Promotion promotion);
     List<Promotion> findAllPromotions();
     List<Promotion> saveAll(List<Promotion> promotions);
+    List<Promotion> findActiveBySegmentOrdered(String customerSegment);
 }

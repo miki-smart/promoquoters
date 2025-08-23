@@ -58,5 +58,11 @@ public class PromotionJpaAdapter implements IPromotionRepository {
         return savedEntities.stream().map(PromotionMapper::toDomain).toList();
     }
 
+    @Override
+    public List<Promotion> findActiveBySegmentOrdered(String customerSegment) {
+        return this.promotionJpaRepository.findByActiveTrueOrderByPriorityAsc()
+                .stream().map(PromotionMapper::toDomain).toList();
+    }
+
 
 }

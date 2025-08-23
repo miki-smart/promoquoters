@@ -1,6 +1,4 @@
 package com.backend.promoquoter.infrastructure.adapter.out.persistence.repo;
-
-import com.backend.promoquoter.domain.model.Product;
 import com.backend.promoquoter.infrastructure.adapter.out.persistence.entity.ProductEntity;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
