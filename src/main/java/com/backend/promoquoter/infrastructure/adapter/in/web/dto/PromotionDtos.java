@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 import java.math.BigDecimal;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class PromotionDtos {
-    private UUID id;
-    private String name;
-    private String description;
-    private BigDecimal discount;
-    private String startDate;
-    private String endDate;
-}
+
+public record PromotionDtos (
+        UUID id,
+        String name,
+        String description,
+        BigDecimal discount,
+        String startDate,
+        String endDate
+){}

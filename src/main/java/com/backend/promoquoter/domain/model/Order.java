@@ -19,20 +19,6 @@ public class Order {
     public static Order create(List<OrderItem> items,BigDecimal total) {
         return new Order(UUID.randomUUID(),items,total);
     }
-    @Getter
-    @Setter
-    public class OrderItem {
-        private final UUID ProductId;
-        private final int Quantity;
-        private final BigDecimal Price;
 
-        public OrderItem(UUID productId, int quantity, BigDecimal price) {
-            this.ProductId = productId;
-            this.Quantity = quantity;
-            this.Price = price;
-        }
-
-
-    }
 }
 

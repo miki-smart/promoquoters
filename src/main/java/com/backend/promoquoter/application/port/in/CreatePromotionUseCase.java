@@ -14,6 +14,10 @@ public interface CreatePromotionUseCase {
     ) {}
 
     record PromotionCreated(
-            String id
+            String id,
+            String type,
+            Map<String, Object> config,
+            int priority,
+            boolean active
     ) {}
 }

@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/cart")
+@RequestMapping("/cart")
 public class CartController {
     @PostMapping("/creatCart")
     public ResponseEntity<CartDtos> createCart(@RequestBody CartDtos cartDtos) {
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
     }
 
-    @PostMapping("/calculateQuote")
+    @PostMapping("/quote")
     public ResponseEntity<CartDtos> calculateCartQuote(@RequestBody CartDtos cartDtos) {
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
     }
 
-    @PostMapping("/confirmCart")
+    @PostMapping("/confirm")
     public ResponseEntity<CartDtos> confirmCart(@RequestBody CartDtos cartDtos) {
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
     }

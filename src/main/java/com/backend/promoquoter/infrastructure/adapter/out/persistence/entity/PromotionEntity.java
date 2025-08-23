@@ -6,20 +6,50 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
+import java.util.Map;
 import java.util.UUID;
 
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @Entity
 @Table(name = "promotion")
 public class PromotionEntity {
 
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false)
-    private String name;
+    private String type;
+
+    @Column(nullable = false)
+    private Integer priority;
+
+    @Column(nullable = false)
+    private Boolean active;
+
+    @Lob
+    @Column(name = "config_json")
+    private String configJson;
+
+    @Column(nullable = false)
+    private Instant createdAt;
+
+    @Column(nullable = false)
+    private Instant updatedAt;
+
+    @PrePersist
+    void prePersist() {
+        Instant now = Instant.now();
+        createdAt = now;
+        updatedAt = now;
+    }
+
+    @PreUpdate
+    void preUpdate() {
+        updatedAt = Instant.now();
+    }
 }
