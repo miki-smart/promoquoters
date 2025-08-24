@@ -164,7 +164,7 @@ public class CartApplicationService implements CalculateCartQuoteUseCase, Confir
                 throw new IllegalArgumentException("Product ID cannot be null or empty");
             }
             if (item.qty() <= 0) {
-                throw new IllegalArgumentException("Quantity must be greater than 0");
+                throw new IllegalArgumentException("qty must be greater than 0");
             }
             try {
                 UUID.fromString(item.productId());
@@ -186,7 +186,7 @@ public class CartApplicationService implements CalculateCartQuoteUseCase, Confir
                 throw new IllegalArgumentException("Product ID cannot be null or empty");
             }
             if (item.qty() <= 0) {
-                throw new IllegalArgumentException("Quantity must be greater than 0");
+                throw new IllegalArgumentException("qty must be greater than 0");
             }
             try {
                 UUID.fromString(item.productId());
